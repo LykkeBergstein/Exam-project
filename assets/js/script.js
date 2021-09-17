@@ -94,7 +94,7 @@ if (flowerSelect) {
     } else if (url.indexOf('addFlowers') > -1){
         addFlower.addEventListener('click', (event => {
             const payload = {
-                userId: window.localStorage.getItem('accountInfo').userId,
+                userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
                 flowerId: flowerSelect.value
             }
 
@@ -105,13 +105,21 @@ if (flowerSelect) {
                 },
                 body: JSON.stringify(payload)
             }
+            /* INSERT INTO islandFlower (userId, flowerId)
+            VALUES (@userId, @flowerId);
+                        
+            SELECT *
+            FROM flowers
+            WHERE @flowerId = flowerId; */
 
             fetch(APIaddress + '/api/profiles/me', fetchOptions)
                 .then(response => {
                     return response.json()
                 })
-                .then(data => {
-                    console.log(data);
+                .then(flower => {
+                    console.log(flower);
+                    //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                    
                 })
                 .catch(error => {
                     console.log(error);
