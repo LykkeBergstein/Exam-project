@@ -2,6 +2,8 @@
 *{ 
     padding: 0; 
     margin: 0; 
+    font-family: 'Bubblegum Sans', cursive;
+
 } 
 body{ 
     background-image: url("/assets/images/animal-crossing-new-horizons-tom-nook-and-nooklings-uhd-4k-wallpaper.jpg"); 
@@ -11,7 +13,6 @@ body{
     background-attachment: fixed; 
     background-repeat: no-repeat; 
     opacity: 80%; 
-    font-family: 'Bubblegum Sans', cursive;
     color: #464646; 
 } 
 
@@ -19,7 +20,7 @@ h1{
     font-size: 70px; 
     display: block; 
     text-align: center; 
-    margin-top: 25vh; 
+    margin-top: 15vh; 
 } 
 
 h2{ 
@@ -34,17 +35,29 @@ h2{
     flex-direction: row; 
     width: 100%; 
     align-items: center; 
+    justify-content: center;
 } 
+
+.buttondiv a {
+    text-decoration: none;
+    margin: 25px;
+}
+
+.buttondiv button {
+    padding: 10px;
+    cursor: pointer;
+}
 
 .buttonIndex{ 
     display: block; 
     width: 300px; 
     height: 90px; 
     border-radius: 30px; 
-    border: 3px solid #000000; 
+    border: 3px solid #464646; 
+    color: #464646;
     font-size: 25px; 
     font-weight: bold;  
-    box-shadow: 5px 10px lightgray; 
+    box-shadow: 5px 10px lightgray;
 } 
 
 .selectDiv {
@@ -58,6 +71,11 @@ select {
     padding: 10px;
     width: 200px;
     margin-bottom: 40px;
-    font-family: 'Bubblegum Sans', cursive;
     color: #464646; 
+}
+
+.icon {
+    color: #464646;
+    font-size: 50px;
+    padding: 50px 0 0 50px;
 }
