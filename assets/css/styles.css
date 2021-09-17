@@ -12,15 +12,14 @@ body{
     align-content: center; 
     background-attachment: fixed; 
     background-repeat: no-repeat; 
-    opacity: 80%; 
-    color: #464646; 
+    color: #636363; 
 } 
 
 h1{ 
     font-size: 70px; 
     display: block; 
     text-align: center; 
-    margin-top: 15vh; 
+    margin-top: 10vh; 
 } 
 
 h2{ 
@@ -46,6 +45,7 @@ h2{
 .buttondiv button {
     padding: 10px;
     cursor: pointer;
+    margin-bottom: 50px;
 }
 
 .buttonIndex{ 
@@ -53,8 +53,8 @@ h2{
     width: 300px; 
     height: 90px; 
     border-radius: 30px; 
-    border: 3px solid #464646; 
-    color: #464646;
+    border: 3px solid #636363; 
+    color: #636363; 
     font-size: 25px; 
     font-weight: bold;  
     box-shadow: 5px 10px lightgray;
@@ -71,11 +71,27 @@ select {
     padding: 10px;
     width: 200px;
     margin-bottom: 40px;
-    color: #464646; 
+    color: #636363; 
 }
 
 .icon {
-    color: #464646;
+    color: #636363; 
     font-size: 50px;
     padding: 50px 0 0 50px;
+}
+
+.registerDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.registerDiv input {
+    width: 250px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
 }

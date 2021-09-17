@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,29 @@
     <title>Animal Crossing Flower Helper</title>
     <link href="assets/css/styles.css" rel="stylesheet">
     <script src="assets/js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/4d151777d8.js" crossorigin="anonymous"></script> <!-- font awesome -->
 </head>
-<body>
-    <h1> Register </h1> 
-        <h2> Which flower would you like to add to your island? </h2> 
-        <label for="username"> Enter username: </label> 
 
-        <input type="text" id="usernamebox" name="username" value="Enter username" > 
-        <label for="islandname"> Enter island name: </label> 
-        <input type="text" id="islandnamebox" name="islandname" value="Enter the name of your island" > 
-        <input type="text" id="passwordbox" name="password" value="Enter password" > 
-        <div class="buttondiv"> 
-        <button type="button" id="registerUser" class="buttonIndex" > 
-            Register 
-        </button> 
+<body>
+    <a href="index.html">
+        <i class="icon fas fa-arrow-circle-left"></i>
+    </a>
+    <h1> Register </h1>
+    <div class="registerDiv">
+        <label for="username">Enter email: </label>
+        <input type="text" id="emailbox" name="email" placeholder="Enter email">
+        <label for="username">Enter username: </label>
+        <input type="text" id="usernamebox" name="username" placeholder="Enter username">
+        <label for="islandname">Enter island name: </label>
+        <input type="text" id="islandnamebox" name="islandname" placeholder="Enter the name of your island">
+        <label for="islandname">Enter password: </label>
+        <input type="password" id="passwordbox" name="password" placeholder="Enter password">
+    </div>
+    <div class="buttondiv">
+        <button type="button" id="registerUser" class="buttonIndex">
+            Register
+        </button>
+    </div>
 </body>
+
 </html>
