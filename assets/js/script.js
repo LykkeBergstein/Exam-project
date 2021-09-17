@@ -3,6 +3,7 @@ const FlowerSelect = document.getElementById('FlowerSelect');
 const registerDiv = document.getElementById('registerDiv');
 const loginDiv = document.getElementById('loginDiv');
 const registerUserBtn = document.getElementById('registerUserBtn');
+const loginBtn = document.getElementById('loginBtn');
 const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
 const userName = document.querySelector('#userName');
@@ -109,7 +110,15 @@ if (registerDiv) {
                 })
                 .then(accountInfo => {
                     console.log(accountInfo);
-
+                    if (accountInfo.errorMessage) {
+                        alert(accountInfo.errorMessage);
+                    }
+                    if (!accountInfo.errorMessage) {
+                        window.location.replace("http://127.0.0.1:5500/login.html");
+                    }
+                    /* if (accountInfo) {
+                        window.location.replace("http://127.0.0.1:5500/login.html");
+                    } */
                     //document.getElementById('output').innerHTML = text;
                 })
                 .catch(error => {
@@ -120,21 +129,22 @@ if (registerDiv) {
 }
 
 if (loginDiv) {
-    if (userEmail.value && userPassword.value) {
-        const payload = {
-            userEmail: userEmail.value,
-            userPassword: userPassword.value
-        }
+    loginBtn.addEventListener('click', (event) => {
+        if (userEmail.value && userPassword.value) {
+            const payload = {
+                userEmail: userEmail.value,
+                userPassword: userPassword.value
+            }
 
-        const fetchOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        }
+            const fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
 
-        fetch(APIaddress + '/api/accounts/login', fetchOptions)
+            fetch(APIaddress + '/api/accounts/login', fetchOptions)
             .then(response => {
                 const token = response.headers.get('x-authenticate-token');
                 window.localStorage.setItem('x-authenticate-token', token);
@@ -145,16 +155,17 @@ if (loginDiv) {
             .then(data => {
                 console.log(data);
                 window.localStorage.setItem('accountInfo', JSON.stringify(data));
-                console.log(window.localStorage.getItem('accountInfo'));
-
-                loginDiv.classList.toggle('hidden');
-                logoutDiv.classList.toggle('hidden');
+                
+                if (window.localStorage.getItem('accountInfo')) {
+                    console.log(window.localStorage.getItem('accountInfo'));
+                } else {
+                    alert(data.errorMessage);
+                }
             })
             .catch(error => {
                 alert('Invalid user name or password.');
             })
-
-    } else {
-        alert('Please enter user email and password!');
-    }
+        }
+    })
+    
 }
