@@ -4,6 +4,7 @@ const registerDiv = document.getElementById('registerDiv');
 const loginDiv = document.getElementById('loginDiv');
 const registerUserBtn = document.getElementById('registerUserBtn');
 const loginBtn = document.getElementById('loginBtn');
+const addFlower = document.getElementById('addFlower');
 const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
 const userName = document.querySelector('#userName');
@@ -57,37 +58,66 @@ function getAllFlowers() {
 }
 
 if (flowerSelect) {
-    flowerSelect.addEventListener('change', (event) => {
-        console.log(event.target.value);
-        const fetchOptions = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
+    const url = window.location.href;
+    if(url.indexOf('flowerHelp') > -1) {
+        flowerSelect.addEventListener('change', (event) => {
+            console.log(event.target.value);
+            const fetchOptions = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
-        }
-        fetch(APIaddress + '/api/flowers/' + event.target.value, fetchOptions)
-            .then(response => {
-                return response.json()
-            })
-            .then(flowers => {
-                console.log(flowers);
-                flowers.forEach(flower => {
-                    if (flower.flowerColor == null) {
-                        text = `${flower.note}`;
-                    } else if (flower.breedingFlower1 == null) {
-                        text = `${flower.note}`;
-                    } else {
-                        text = `To get ${flower.flowerColor} ${flower.flowerType} breed ${flower.breedingFlower1} and ${flower.breedingFlower2}`;
+            fetch(APIaddress + '/api/flowers/' + event.target.value, fetchOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(flowers => {
+                    console.log(flowers);
+                    flowers.forEach(flower => {
+                        if (flower.flowerColor == null) {
+                            text = `${flower.note}`;
+                        } else if (flower.breedingFlower1 == null) {
+                            text = `${flower.note}`;
+                        } else {
+                            text = `To get ${flower.flowerColor} ${flower.flowerType} breed ${flower.breedingFlower1} and ${flower.breedingFlower2}`;
+                        }
+                    })
+                    if(document.getElementById('output')) {
+                        document.getElementById('output').innerHTML = text;
                     }
                 })
-                if(document.getElementById('output')) {
-                    document.getElementById('output').innerHTML = text;
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    });
+                .catch(error => {
+                    console.log(error);
+                })
+        });
+    } else if (url.indexOf('addFlowers') > -1){
+        addFlower.addEventListener('click', (event => {
+            const payload = {
+                userId: window.localStorage.getItem('accountInfo').userId,
+                flowerId: flowerSelect.value
+            }
+
+            const fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
+
+            fetch(APIaddress + '/api/profiles/me', fetchOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }));
+    }
 }
 
 if (registerDiv) {
