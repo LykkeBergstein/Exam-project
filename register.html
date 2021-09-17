@@ -12,22 +12,22 @@
 </head>
 
 <body>
-    <a href="index.html">
+    <a href="loginOrRegister.html">
         <i class="icon fas fa-arrow-circle-left"></i>
     </a>
     <h1> Register </h1>
-    <div class="registerDiv">
-        <label for="username">Enter email: </label>
-        <input type="text" id="emailbox" name="email" placeholder="Enter email">
-        <label for="username">Enter username: </label>
-        <input type="text" id="usernamebox" name="username" placeholder="Enter username">
-        <label for="islandname">Enter island name: </label>
-        <input type="text" id="islandnamebox" name="islandname" placeholder="Enter the name of your island">
-        <label for="islandname">Enter password: </label>
-        <input type="password" id="passwordbox" name="password" placeholder="Enter password">
+    <div class="registerDiv" id="registerDiv">
+        <label for="userEmail">Enter email: </label>
+        <input type="text" id="userEmail" name="userEmail" placeholder="Enter email">
+        <label for="userPassword">Enter password: </label>
+        <input type="password" id="userPassword" name="userPassword" placeholder="Enter password">
+        <label for="userName">Enter username: </label>
+        <input type="text" id="userName" name="userName" placeholder="Enter username">
+        <label for="islandName">Enter island name: </label>
+        <input type="text" id="islandName" name="islandName" placeholder="Enter the name of your island">
     </div>
     <div class="buttondiv">
-        <button type="button" id="registerUser" class="buttonIndex">
+        <button type="button" id="registerUserBtn" class="buttonIndex">
             Register
         </button>
     </div>
