@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
 *{ 
     padding: 0; 
     margin: 0; 
     font-family: 'Bubblegum Sans', cursive;
-
+    color: #636363; 
 } 
+
 body{ 
     background-image: url("/assets/images/animal-crossing-new-horizons-tom-nook-and-nooklings-uhd-4k-wallpaper.jpg"); 
     background-size: cover; 
@@ -12,24 +14,22 @@ body{
     align-content: center; 
     background-attachment: fixed; 
     background-repeat: no-repeat; 
-    color: #636363; 
-} 
+}
 
-h1{ 
+h1 { 
     font-size: 70px; 
-    display: block; 
-    text-align: center; 
-    margin-top: 10vh; 
-} 
-
-h2{ 
-    font-size: 45px; 
     display: block; 
     text-align: center; 
     margin: 5vh; 
 } 
 
-.buttondiv{ 
+h2 { 
+    font-size: 45px; 
+    text-align: center; 
+    margin: 5vh; 
+}
+
+.buttondiv { 
     display: flex; 
     flex-direction: row; 
     width: 100%; 
@@ -54,7 +54,6 @@ h2{
     height: 90px; 
     border-radius: 30px; 
     border: 3px solid #636363; 
-    color: #636363; 
     font-size: 25px; 
     font-weight: bold;  
     box-shadow: 5px 10px lightgray;
@@ -71,22 +70,22 @@ select {
     padding: 10px;
     width: 200px;
     margin-bottom: 40px;
-    color: #636363; 
 }
 
 .icon {
-    color: #636363; 
     font-size: 50px;
     padding: 50px 0 0 50px;
+}
+
+.hidden {
+    display: hidden;
 }
 
 .registerDiv {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
     font-size: 30px;
+    align-items: center;
 }
 
 .registerDiv input {

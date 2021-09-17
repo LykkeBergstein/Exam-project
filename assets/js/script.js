@@ -1,5 +1,5 @@
 const APIaddress = 'http://127.0.0.1:8113';
-const FlowerSelect = document.getElementById('FlowerSelect');
+const flowerSelect = document.getElementById('flowerSelect');
 const registerDiv = document.getElementById('registerDiv');
 const loginDiv = document.getElementById('loginDiv');
 const registerUserBtn = document.getElementById('registerUserBtn');
@@ -15,6 +15,8 @@ createPage();
 function createPage() {
     const url = window.location.href;
     if (url.indexOf('flowerHelp') > -1) {
+        getAllFlowers();
+    } else if (url.indexOf('addFlowers') > -1) {
         getAllFlowers();
     }
 }
@@ -47,15 +49,15 @@ function getAllFlowers() {
                 }
 
             });
-            document.getElementById('FlowerSelect').innerHTML = text;
+            document.getElementById('flowerSelect').innerHTML = text;
         })
         .catch(error => {
             console.log(error);
         })
 }
 
-if (FlowerSelect) {
-    FlowerSelect.addEventListener('change', (event) => {
+if (flowerSelect) {
+    flowerSelect.addEventListener('change', (event) => {
         console.log(event.target.value);
         const fetchOptions = {
             method: 'GET',
@@ -78,7 +80,9 @@ if (FlowerSelect) {
                         text = `To get ${flower.flowerColor} ${flower.flowerType} breed ${flower.breedingFlower1} and ${flower.breedingFlower2}`;
                     }
                 })
-                document.getElementById('output').innerHTML = text;
+                if(document.getElementById('output')) {
+                    document.getElementById('output').innerHTML = text;
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -155,12 +159,21 @@ if (loginDiv) {
             .then(data => {
                 console.log(data);
                 window.localStorage.setItem('accountInfo', JSON.stringify(data));
-                
-                if (window.localStorage.getItem('accountInfo')) {
+                console.log(window.localStorage.getItem('accountInfo'));
+                if(data.errorMessage) {
+                    alert('Invalid user name or password.');
+                }
+                /* if(data.success) {
+                    
+                } else {
+                    throw new Error;
+                } */
+
+                /* if (window.localStorage.getItem('accountInfo')) {
                     console.log(window.localStorage.getItem('accountInfo'));
                 } else {
                     alert(data.errorMessage);
-                }
+                } */
             })
             .catch(error => {
                 alert('Invalid user name or password.');

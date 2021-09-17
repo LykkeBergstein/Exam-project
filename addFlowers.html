@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,25 @@
     <title>Animal Crossing Flower Helper</title>
     <link href="assets/css/styles.css" rel="stylesheet">
     <script src="assets/js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/4d151777d8.js" crossorigin="anonymous"></script> <!-- font awesome -->
 </head>
+
 <body>
-    <h1> Add flower </h1> 
-        <h2> Which flower would you like to add to your island? </h2> 
-        <label for="flowers"> </label> 
-            <select name="flowers" id="FlowerSelect" > 
-                <option value="cosmos" > Cosmos </option> 
-                <option value="hyacinths" > Hyacinths </option> 
-                <option value="lilies" > Lilies </option> 
-                <option value="mums" > Mums </option> 
-                <option value="pansies" > Pansies </option> 
-                <option value="roses" > Roses </option> 
-                <option value="tulips" > Tulips </option> 
-                <option value="windflowers" > Windflowers </option> 
-            </select> 
-        <div class="buttondiv"> 
-        <button type="button" id="addFlower" class="buttonIndex" > 
+    <header>
+        <a href="index.html">
+            <i class="icon fas fa-arrow-circle-left"></i>
+        </a>
+    </header>
+    <h1> Add flower </h1>
+    <h2> Which flower would you like to add to your island? </h2>
+    <div class="selectDiv">
+        <select name="flowers" id="flowerSelect"></select>
+    </div>
+    <div class="buttondiv">
+        <button type="button" id="addFlower" class="buttonIndex">
             Add flower
-        </button> 
+        </button>
+    </div>
 </body>
+
 </html>
