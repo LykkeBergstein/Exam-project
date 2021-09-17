@@ -1,0 +1,54 @@
+*{ 
+    padding: 0; 
+
+    margin: 0; 
+} 
+body{ 
+    background-image: url("/assets/images/animal-crossing-new-horizons-tom-nook-and-nooklings-uhd-4k-wallpaper.jpg"); 
+    background-size: cover; 
+    background-position: center bottom; 
+    align-content: center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
+    opacity: 80%; 
+} 
+
+@font-face{ 
+    font-family: FinkHeavy; 
+    src: url("FinkHeavy.ttf")  ; 
+} 
+
+h1{ 
+    font-size: 70px; 
+    display: block; 
+    text-align: center; 
+    font-family: FinkHeavy; 
+    color: #707070; 
+    margin-top: 25vh; 
+} 
+
+h2{ 
+    font-size: 45px; 
+    display: block; 
+    text-align: center; 
+    color: #707070; 
+    margin: 5vh; 
+} 
+
+.buttondiv{ 
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    align-items: center; 
+} 
+
+.buttonIndex{ 
+    display: block; 
+    width: 300px; 
+    height: 90px; 
+    border-radius: 30px; 
+    border: 3px solid #000000; 
+    font-size: 25px; 
+    font-weight: bold;  
+    box-shadow: 5px 10px lightgray; 
+} 

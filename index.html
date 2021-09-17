@@ -1,181 +1,35 @@
-
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title> 
-        Animal Crossing flowerhelper 
-    </title> 
-</head> 
-<body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Crossing Flower Helper</title>
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
     <div id="content"> 
-    <h1> 
-        Animal Crossing Flowerhelper 
-    </h1> 
-
-    <h2> 
-        What do you want help with today? 
-    </h2> 
-    <div class="buttondiv"> 
-        <button type="button" id="crossbreed" class="buttonIndex" > 
-            Crossbreeding and pollinating flowers 
-        </button> 
-
-        <button type="button" id="checkFlowers" class="buttonIndex"> 
-            I want to check which flowers I have 
-        </button> 
-    </div> 
-    </div> 
-</body> 
-</html> 
-
-<style> 
-*{ 
-    padding: 0; 
-
-    margin: 0; 
-} 
-body{ 
-    background-image: url("animal-crossing-new-horizons-tom-nook-and-nooklings-uhd-4k-wallpaper.jpg"); 
-    background-size: cover; 
-    background-position: center bottom; 
-    align-content: center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
-    opacity: 80%; 
-} 
-
-@font-face{ 
-    font-family: FinkHeavy; 
-    src: url("FinkHeavy.ttf")  ; 
-} 
-
-h1{ 
-    font-size: 70px; 
-    display: block; 
-    text-align: center; 
-    font-family: FinkHeavy; 
-    color: #707070; 
-    margin-top: 25vh; 
-} 
-
-h2{ 
-    font-size: 45px; 
-    display: block; 
-    text-align: center; 
-    color: #707070; 
-    margin: 5vh; 
-} 
-
-.buttondiv{ 
-    display: flex; 
-    flex-direction: row; 
-    width: 100%; 
-    align-items: center; 
-} 
-
-.buttonIndex{ 
-    display: block; 
-    width: 300px; 
-    height: 90px; 
-    border-radius: 30px; 
-    border: 3px solid #000000; 
-    font-size: 25px; 
-    font-weight: bold;  
-    box-shadow: 5px 10px lightgray; 
-} 
-</style> 
-
-
-
-
-
-<script> 
-document.getElementById ("checkFlowers") .addEventListener("click", () => { 
-    document.querySelector("#content").innerHTML = ` 
-        <h1> My flowers </h1> 
-        <h2> Please login or register to view and keep track of your flowers </h2> 
+        <h1> 
+            Animal Crossing Flowerhelper 
+        </h1> 
+    
+        <h2> 
+            What do you want help with today? 
+        </h2> 
         <div class="buttondiv"> 
-        <button type="button" id="loginButton" class="buttonIndex" > 
-            Login 
-        </button> 
-
-        <button type="button" id="registerButton" class="buttonIndex"> 
-            Register 
-        </button> 
-    `; 
-    document.getElementById ("loginButton") .addEventListener("click", () => { 
-    document.querySelector("#content").innerHTML = ` 
-        <h1> My Login </h1> 
-        <h2> Please enter your username and password </h2> 
-        
-        <div class="buttondiv"> 
-        <button type="button" id="loginButtonSite" class="buttonIndex" > 
-            Login 
-        </button> 
-
-    `; 
-    document.getElementById ("loginButtonSite") .addEventListener("click", () => { 
-    document.querySelector("#content").innerHTML = ` 
-        <h1> Add flower </h1> 
-        <h2> Which flower would you like to add to your island? </h2> 
-        <label for="flowers"> </label> 
-            <select name="flowers" id="FlowerSelect" > 
-                <option value="cosmos" > Cosmos </option> 
-                <option value="hyacinths" > Hyacinths </option> 
-                <option value="lilies" > Lilies </option> 
-                <option value="mums" > Mums </option> 
-                <option value="pansies" > Pansies </option> 
-                <option value="roses" > Roses </option> 
-                <option value="tulips" > Tulips </option> 
-                <option value="windflowers" > Windflowers </option> 
-            </select> 
-        <div class="buttondiv"> 
-        <button type="button" id="addFlower" class="buttonIndex" > 
-            Add flower
-        </button> 
-
-    `; 
-}); 
-}); 
-document.getElementById ("registerButton") .addEventListener("click", () => { 
-    document.querySelector("#content").innerHTML = ` 
-        <h1> Register </h1> 
-        <h2> Which flower would you like to add to your island? </h2> 
-        <label for="username"> Enter username: </label> 
-
-        <input type="text" id="usernamebox" name="username" value="Enter username" > 
-        <label for="islandname"> Enter island name: </label> 
-        <input type="text" id="islandnamebox" name="islandname" value="Enter the name of your island" > 
-        <input type="text" id="passwordbox" name="password" value="Enter password" > 
-        <div class="buttondiv"> 
-        <button type="button" id="registerUser" class="buttonIndex" > 
-            Register 
-        </button> 
-
-    `; }); 
-}); 
-
-document.getElementById ("crossbreed") .addEventListener("click", () => { 
-document.querySelector("#content").innerHTML = ` 
-    <h1> Crossbreeding and pollinating </h1> 
-
-    <h2> Which flower would you like to get? </h2> 
-    <label for="flowers"> </label> 
-    <select name="flowers" id="FlowerSelect" > 
-        <option value="cosmos" > Cosmos </option> 
-        <option value="hyacinths" > Hyacinths </option> 
-        <option value="lilies" > Lilies </option> 
-        <option value="mums" > Mums </option> 
-        <option value="pansies" > Pansies </option> 
-        <option value="roses" > Roses </option> 
-        <option value="tulips" > Tulips </option> 
-        <option value="windflowers" > Windflowers </option> 
-    </select> 
-`; 
-}); 
-
-
-
-</script> 
+            <a href="flowerHelp.html">
+                <button type="button" id="crossbreed" class="buttonIndex" > 
+                    Crossbreeding and pollinating flowers 
+                </button> 
+            </a>
+    
+            <a href="loginOrRegister.html">
+                <button type="button" id="checkFlowers" class="buttonIndex"> 
+                    I want to check which flowers I have 
+                </button> 
+            </a>
+        </div> 
+        </div> 
+</body>
+</html>
