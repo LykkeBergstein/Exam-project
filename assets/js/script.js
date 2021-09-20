@@ -24,15 +24,14 @@ function createPage() {
 
 function getAllFlowers() {
     let text;
-    //         
 
-    //document.getElementById('FlowerSelect').innerHTML = text;
     const fetchOptions = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     }
+    
     fetch(APIaddress + '/api/flowers', fetchOptions)
         .then(response => {
             return response.json()
@@ -105,12 +104,6 @@ if (flowerSelect) {
                 },
                 body: JSON.stringify(payload)
             }
-            /* INSERT INTO islandFlower (FK_userId, FK_flowerId)
-            VALUES (@userId, @flowerId);
-                        
-            SELECT *
-            FROM flowers
-            WHERE @flowerId = flowerId; */
 
             fetch(APIaddress + '/api/profiles/me', fetchOptions)
                 .then(response => {
