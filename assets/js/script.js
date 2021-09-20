@@ -105,7 +105,7 @@ if (flowerSelect) {
                 },
                 body: JSON.stringify(payload)
             }
-            /* INSERT INTO islandFlower (userId, flowerId)
+            /* INSERT INTO islandFlower (FK_userId, FK_flowerId)
             VALUES (@userId, @flowerId);
                         
             SELECT *
