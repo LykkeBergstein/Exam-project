@@ -1,4 +1,4 @@
-const APIaddress = 'http://127.0.0.1:8113';
+const APIaddress = 'http://127.0.0.1:8113/api';
 const flowerSelect = document.getElementById('flowerSelect');
 const registerDiv = document.getElementById('registerDiv');
 const loginDiv = document.getElementById('loginDiv');
@@ -34,7 +34,7 @@ function getAllFlowers() {
         }
     }
     
-    fetch(APIaddress + '/api/flowers', fetchOptions)
+    fetch(APIaddress + '/flowers', fetchOptions)
         .then(response => {
             return response.json()
         })
@@ -69,7 +69,7 @@ if (flowerSelect) {
                     'Content-Type': 'application/json'
                 }
             }
-            fetch(APIaddress + '/api/flowers/' + event.target.value, fetchOptions)
+            fetch(APIaddress + '/flowers/' + event.target.value, fetchOptions)
                 .then(response => {
                     return response.json()
                 })
@@ -107,7 +107,7 @@ if (flowerSelect) {
                 body: JSON.stringify(payload)
             }
 
-            fetch(APIaddress + '/api/island', fetchOptions)
+            fetch(APIaddress + '/island', fetchOptions)
                 .then(response => {
                     return response.json()
                 })
@@ -141,7 +141,7 @@ if (registerDiv) {
                 body: JSON.stringify(payload)
             }
 
-            fetch(APIaddress + '/api/accounts', fetchOptions)
+            fetch(APIaddress + '/accounts', fetchOptions)
                 .then(response => {
                     return response.json()
                 })
@@ -181,7 +181,7 @@ if (loginDiv) {
                 body: JSON.stringify(payload)
             }
 
-            fetch(APIaddress + '/api/accounts/login', fetchOptions)
+            fetch(APIaddress + '/accounts/login', fetchOptions)
             .then(response => {
                 const token = response.headers.get('x-authenticate-token');
                 window.localStorage.setItem('x-authenticate-token', token);
@@ -217,19 +217,15 @@ if (loginDiv) {
 }
 
 function getIslandFlowers() {
-    const payload = {
-        userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
-    }
-
+    let userId = JSON.parse(window.localStorage.getItem('accountInfo')).userId;
     const fetchOptions = {
-        method: 'POST',
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
     }
 
-    fetch(APIaddress + '/api/island/' + JSON.parse(window.localStorage.getItem('accountInfo')).userId, fetchOptions)
+    fetch(APIaddress + '/island/' + userId, fetchOptions)
         .then(response => {
             return response.json()
         })
