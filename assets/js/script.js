@@ -19,7 +19,9 @@ function createPage() {
         getAllFlowers();
     } else if (url.indexOf('addFlowers') > -1) {
         getAllFlowers();
-    }
+    } else if (url.indexOf('island') > -1) {
+        getIslandFlowers();
+    } 
 }
 
 function getAllFlowers() {
@@ -105,7 +107,7 @@ if (flowerSelect) {
                 body: JSON.stringify(payload)
             }
 
-            fetch(APIaddress + '/api/profiles/me', fetchOptions)
+            fetch(APIaddress + '/api/island', fetchOptions)
                 .then(response => {
                     return response.json()
                 })
@@ -212,4 +214,31 @@ if (loginDiv) {
         }
     })
     
+}
+
+function getIslandFlowers() {
+    const payload = {
+        userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
+    }
+
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }
+
+    fetch(APIaddress + '/api/island/' + JSON.parse(window.localStorage.getItem('accountInfo')).userId, fetchOptions)
+        .then(response => {
+            return response.json()
+        })
+        .then(flowers => {
+            console.log(flowers);
+            //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
 }
