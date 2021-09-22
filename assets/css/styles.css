@@ -74,7 +74,8 @@ select {
 
 .icon {
     font-size: 50px;
-    padding: 50px 0 0 50px;
+    padding: 50px 50px;
+
 }
 
 .hidden {
@@ -108,4 +109,22 @@ select {
     font-size: 20px;
     margin: 0 20px 50px 20px;
     padding: 10px;
+}
+
+.logoutBtn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 30px; 
+    border: 3px solid #636363; 
+    font-size: 20px; 
+    font-weight: bold;  
+    box-shadow: 5px 10px lightgray;
+    margin-right: 50px;
+}
+
+.headerFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }

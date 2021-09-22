@@ -195,7 +195,10 @@ if (loginDiv) {
                 console.log(window.localStorage.getItem('accountInfo'));
                 if(data.errorMessage) {
                     alert('Invalid user name or password.');
+                } else {
+                    window.location.replace("http://127.0.0.1:5500/island.html");
                 }
+                
                 /* if(data.success) {
                     
                 } else {
@@ -230,6 +233,20 @@ function getIslandFlowers() {
             return response.json()
         })
         .then(flowers => {
+            let islandName = JSON.parse(window.localStorage.getItem('accountInfo')).islandName;
+            let text = `Flowers on ${islandName}`;
+            document.querySelector('h1').innerHTML = text;
+            let flowersText = "";
+            flowers.forEach(flower => {
+                if (flower.flowerColor == null) {
+                    flowersText += `<p>${flower.flowerType}</p>`;
+                } else {
+                    flowersText += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
+                }
+                
+            })
+
+            document.getElementById('output').innerHTML = flowersText;
             console.log(flowers);
             //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
             
