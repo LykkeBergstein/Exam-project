@@ -80,10 +80,6 @@ select {
 
 }
 
-.hidden {
-    display: hidden;
-}
-
 .registerDiv {
     display: flex;
     flex-direction: column;
@@ -161,4 +157,8 @@ th {
     flex-direction: row;
     justify-content: space-around;
     margin: 0 350px;
+}
+
+.frontpageHeader {
+    margin-top: 150px;
 }

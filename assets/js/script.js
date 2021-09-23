@@ -4,6 +4,7 @@ const registerDiv = document.getElementById('registerDiv');
 const loginDiv = document.getElementById('loginDiv');
 const registerUserBtn = document.getElementById('registerUserBtn');
 const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
 const addFlower = document.getElementById('addFlower');
 const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
@@ -268,7 +269,6 @@ function getIslandFlowers() {
             let islandName = JSON.parse(window.localStorage.getItem('accountInfo')).islandName;
             let text = `Flowers on ${islandName}`;
             document.querySelector('h1').innerHTML = text;
-            let flowersText = "";
             flowers.forEach(flower => { 
                 if (flower.flowerType == "Cosmos") { 
                     document.getElementById ('cosmosTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
@@ -276,36 +276,36 @@ function getIslandFlowers() {
                     document.getElementById ('hyacinthTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Lily") { 
                     if (flower.flowerColor == null) { 
-                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerType} </p>` ; 
                     } else if (flower.flowerColor != null){
-
+                        document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ;
                     }
                 } else if (flower.flowerType == "Mum") { 
-
+                    document.getElementById ('MumTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Pansy") { 
-
+                    document.getElementById ('pansyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Rose") { 
-
+                    document.getElementById ('roseTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Tulip") { 
-
+                     document.getElementById ('tulipTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Windflower") { 
-                    console.log("hej")
+                     document.getElementById ('windflowerTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 }
-    /*            if (flower.flowerColor == null) {
-                    flowersText += `<p>${flower.flowerType}</p>`;
-                } else {
-                    flowersText += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
-                } */ 
-                
-                
             })
 
-            document.getElementById('output').innerHTML = flowersText;
             console.log(flowers);
-            //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
             
         })
         .catch(error => {
             console.log(error);
         })
+}
+
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', (e) => {
+        window.localStorage.removeItem('x-authenticate-token');
+        window.localStorage.removeItem('accountInfo');
+        console.log('Account logged out.');
+        window.location.replace("http://127.0.0.1:5500/index.html");
+    });    
 }
