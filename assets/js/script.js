@@ -9,6 +9,8 @@ const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
 const userName = document.querySelector('#userName');
 const islandName = document.querySelector('#islandName');
+const removeFlower = document.getElementById('removeFlower');
+
 
 
 createPage();
@@ -21,7 +23,9 @@ function createPage() {
         getAllFlowers();
     } else if (url.indexOf('island') > -1) {
         getIslandFlowers();
-    } 
+    } else if (url.indexOf('deleteFlowers') > -1) {
+        getAllFlowers();
+    }
 }
 
 function getAllFlowers() {
@@ -108,6 +112,34 @@ if (flowerSelect) {
             }
 
             fetch(APIaddress + '/island', fetchOptions)
+                .then(response => {
+                    return response.json()
+                })
+                .then(flower => {
+                    console.log(flower);
+                    //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }));
+    } else if (url.indexOf('deleteFlowers') > -1){
+        removeFlower.addEventListener('click', (event => {
+            const payload = {
+                userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
+                flowerId: flowerSelect.value
+            }
+
+            const fetchOptions = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
+
+            fetch(APIaddress + '/island/remove', fetchOptions)
                 .then(response => {
                     return response.json()
                 })
@@ -239,13 +271,15 @@ function getIslandFlowers() {
             let flowersText = "";
             flowers.forEach(flower => { 
                 if (flower.flowerType == "Cosmos") { 
-                    document.getElementById ('cosmosTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    document.getElementById ('cosmosTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Hyacinth") { 
-                    document.getElementById ('hyacinthTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    document.getElementById ('hyacinthTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Lily") { 
                     if (flower.flowerColor == null) { 
-                    document.getElementById ('lilyTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                    } else if 
+                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerColor != null){
+
+                    }
                 } else if (flower.flowerType == "Mum") { 
 
                 } else if (flower.flowerType == "Pansy") { 
@@ -254,9 +288,9 @@ function getIslandFlowers() {
 
                 } else if (flower.flowerType == "Tulip") { 
 
-                } else (flower.flowerType == "Windflower") { 
-
-                } 
+                } else if (flower.flowerType == "Windflower") { 
+                    console.log("hej")
+                }
     /*            if (flower.flowerColor == null) {
                     flowersText += `<p>${flower.flowerType}</p>`;
                 } else {

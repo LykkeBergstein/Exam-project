@@ -148,10 +148,17 @@ th {
 } 
 
 
- .tableDiv { 
+.tableDiv { 
     display: flex; 
     flex-direction: row; 
     width: 100%; 
     align-items: center; 
     justify-content: space-between; 
- } 
+} 
+
+.islandButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 350px;
+}
