@@ -58,7 +58,9 @@ h2 {
     font-weight: bold;  
     box-shadow: 5px 10px lightgray;
 } 
-
+ a { 
+    text-decoration: none; 
+} 
 .selectDiv {
     display: flex;
     justify-content: center;
@@ -126,5 +128,30 @@ select {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-}
+    align-items: center; 
+  
+} 
+
+ .flowerTable , th, tr { 
+   border: 1px solid black; 
+ } 
+.flowerTable { 
+    width: 200px; 
+
+    margin-bottom: 20px; 
+    height: 300px; 
+    margin: 20px; 
+    background-color: white; 
+} 
+th { 
+    height: 30px; 
+} 
+
+
+ .tableDiv { 
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    align-items: center; 
+    justify-content: space-between; 
+ } 

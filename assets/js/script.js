@@ -81,7 +81,7 @@ if (flowerSelect) {
                         } else if (flower.breedingFlower1 == null) {
                             text = `${flower.note}`;
                         } else {
-                            text = `To get ${flower.flowerColor} ${flower.flowerType} breed ${flower.breedingFlower1} and ${flower.breedingFlower2}`;
+                            text = `To get a ${flower.flowerColor} ${flower.flowerType} breed a ${flower.breedingFlower1} and a ${flower.breedingFlower2} ${flower.flowerType} `; 
                         }
                     })
                     if(document.getElementById('output')) {
@@ -237,12 +237,32 @@ function getIslandFlowers() {
             let text = `Flowers on ${islandName}`;
             document.querySelector('h1').innerHTML = text;
             let flowersText = "";
-            flowers.forEach(flower => {
-                if (flower.flowerColor == null) {
+            flowers.forEach(flower => { 
+                if (flower.flowerType == "Cosmos") { 
+                    document.getElementById ('cosmosTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                } else if (flower.flowerType == "Hyacinth") { 
+                    document.getElementById ('hyacinthTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                } else if (flower.flowerType == "Lily") { 
+                    if (flower.flowerColor == null) { 
+                    document.getElementById ('lilyTable').innerHTML = `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if 
+                } else if (flower.flowerType == "Mum") { 
+
+                } else if (flower.flowerType == "Pansy") { 
+
+                } else if (flower.flowerType == "Rose") { 
+
+                } else if (flower.flowerType == "Tulip") { 
+
+                } else (flower.flowerType == "Windflower") { 
+
+                } 
+    /*            if (flower.flowerColor == null) {
                     flowersText += `<p>${flower.flowerType}</p>`;
                 } else {
                     flowersText += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
-                }
+                } */ 
+                
                 
             })
 
