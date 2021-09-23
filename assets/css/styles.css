@@ -156,9 +156,19 @@ th {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 0 350px;
+    margin: 0 300px;
 }
 
 .frontpageHeader {
     margin-top: 150px;
+}
+
+.deleteOutput {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.addOutput {
+    text-align: center;
+    padding-bottom: 50px;
 }

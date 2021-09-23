@@ -79,16 +79,14 @@ if (flowerSelect) {
                     return response.json()
                 })
                 .then(flowers => {
-                    console.log(flowers);
-                    flowers.forEach(flower => {
-                        if (flower.flowerColor == null) {
-                            text = `${flower.note}`;
-                        } else if (flower.breedingFlower1 == null) {
-                            text = `${flower.note}`;
-                        } else {
-                            text = `To get a ${flower.flowerColor} ${flower.flowerType} breed a ${flower.breedingFlower1} and a ${flower.breedingFlower2} ${flower.flowerType} `; 
-                        }
-                    })
+                    if (flowers[2]) {
+                        text = `
+                        To get a ${flowers[0].flowerColor} ${flowers[0].flowerType} breed a ${flowers[1].flowerColor} ${flowers[1].flowerType} and a ${flowers[2].flowerColor} ${flowers[2].flowerType} 
+                        `;
+                    } else {
+                        text = `${flowers[0].note}`;
+                    }
+
                     if(document.getElementById('output')) {
                         document.getElementById('output').innerHTML = text;
                     }
@@ -117,8 +115,17 @@ if (flowerSelect) {
                     return response.json()
                 })
                 .then(flower => {
-                    console.log(flower);
-                    //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                    if(flower.errorMessage) {
+                        alert('Flower is already on your island');
+                    } else {
+                        if (flower[0].flowerColor != null) {
+                            let text = `${flower[0].flowerColor} ${flower[0].flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                            document.getElementById('addOutput').innerHTML = text;
+                        } else {
+                            let text = `${flower[0].flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                            document.getElementById('addOutput').innerHTML = text;
+                        }
+                    }
                     
                 })
                 .catch(error => {
@@ -133,7 +140,7 @@ if (flowerSelect) {
             }
 
             const fetchOptions = {
-                method: 'DELETE',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -145,9 +152,17 @@ if (flowerSelect) {
                     return response.json()
                 })
                 .then(flower => {
-                    console.log(flower);
-                    //let text = `${flower.flowerColor} ${flower.flowerType} is added to ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
-                    
+                    if(flower.errorMessage) {
+                        alert('Flower is not on your island :(');
+                    } else {
+                        if (flower[0].flowerColor != null) {
+                            let text = `${flower[0].flowerColor} ${flower[0].flowerType} is removed from ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                            document.getElementById('deleteOutput').innerHTML = text;
+                        } else {
+                            let text = `${flower[0].flowerType} is removed from ${JSON.parse(window.localStorage.getItem('accountInfo')).islandName}'s flowers!`;
+                            document.getElementById('deleteOutput').innerHTML = text;
+                        }
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -186,10 +201,7 @@ if (registerDiv) {
                     if (!accountInfo.errorMessage) {
                         window.location.replace("http://127.0.0.1:5500/login.html");
                     }
-                    /* if (accountInfo) {
-                        window.location.replace("http://127.0.0.1:5500/login.html");
-                    } */
-                    //document.getElementById('output').innerHTML = text;
+                    
                 })
                 .catch(error => {
                     console.log(error);
@@ -231,18 +243,6 @@ if (loginDiv) {
                 } else {
                     window.location.replace("http://127.0.0.1:5500/island.html");
                 }
-                
-                /* if(data.success) {
-                    
-                } else {
-                    throw new Error;
-                } */
-
-                /* if (window.localStorage.getItem('accountInfo')) {
-                    console.log(window.localStorage.getItem('accountInfo'));
-                } else {
-                    alert(data.errorMessage);
-                } */
             })
             .catch(error => {
                 alert('Invalid user name or password.');
@@ -274,14 +274,12 @@ function getIslandFlowers() {
                     document.getElementById ('cosmosTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Hyacinth") { 
                     document.getElementById ('hyacinthTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Lily") { 
-                    if (flower.flowerColor == null) { 
+                } else if (flower.flowerType == "Lily") {
+                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ;
+                } else if (flower.flowerType == "Lily of the valley") {
                     document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerType} </p>` ; 
-                    } else if (flower.flowerColor != null){
-                        document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ;
-                    }
                 } else if (flower.flowerType == "Mum") { 
-                    document.getElementById ('MumTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    document.getElementById ('mumTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Pansy") { 
                     document.getElementById ('pansyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
                 } else if (flower.flowerType == "Rose") { 
