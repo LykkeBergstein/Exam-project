@@ -269,30 +269,32 @@ function getIslandFlowers() {
             let islandName = JSON.parse(window.localStorage.getItem('accountInfo')).islandName;
             let text = `Flowers on ${islandName}`;
             document.querySelector('h1').innerHTML = text;
-            flowers.forEach(flower => { 
-                if (flower.flowerType == "Cosmos") { 
-                    document.getElementById ('cosmosTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Hyacinth") { 
-                    document.getElementById ('hyacinthTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Lily") {
-                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ;
-                } else if (flower.flowerType == "Lily of the valley") {
-                    document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Mum") { 
-                    document.getElementById ('mumTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Pansy") { 
-                    document.getElementById ('pansyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Rose") { 
-                    document.getElementById ('roseTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Tulip") { 
-                     document.getElementById ('tulipTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                } else if (flower.flowerType == "Windflower") { 
-                     document.getElementById ('windflowerTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
-                }
-            })
+            if (flowers.errorMessage) {
+                document.getElementById ('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>` ; 
 
-            console.log(flowers);
-            
+            } else {
+                flowers.forEach(flower => { 
+                    if (flower.flowerType == "Cosmos") { 
+                        document.getElementById ('cosmosTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Hyacinth") { 
+                        document.getElementById ('hyacinthTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Lily") {
+                        document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ;
+                    } else if (flower.flowerType == "Lily of the valley") {
+                        document.getElementById ('lilyTable').innerHTML += `<p> ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Mum") { 
+                        document.getElementById ('mumTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Pansy") { 
+                        document.getElementById ('pansyTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Rose") { 
+                        document.getElementById ('roseTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Tulip") { 
+                         document.getElementById ('tulipTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    } else if (flower.flowerType == "Windflower") { 
+                         document.getElementById ('windflowerTable').innerHTML += `<p> ${flower.flowerColor} ${flower.flowerType} </p>` ; 
+                    }
+                })
+            }            
         })
         .catch(error => {
             console.log(error);
