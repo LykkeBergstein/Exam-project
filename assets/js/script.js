@@ -195,11 +195,11 @@ if (registerDiv) {
                 })
                 .then(accountInfo => {
                     console.log(accountInfo);
-                    if (accountInfo.errorMessage) {
+                    /* if (accountInfo.errorMessage) {
 //                        alert(accountInfo.errorMessage);
                         alert (accountInfo.  errorMessage. errorMessage); 
                         window.location.replace ("http://127.0.0.1:5500/register.html"); 
-                    }
+                    } */
                     if (!accountInfo.errorMessage) {
 
                         window.location.replace("http://127.0.0.1:5500/login.html");
