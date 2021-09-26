@@ -273,23 +273,23 @@ function getIslandFlowers() {
                 } else {
                     flowers.forEach(flower => {
                         if (flower.flowerType == "Cosmos") {
-                            document.getElementById('cosmosTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('cosmosTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Hyacinth") {
-                            document.getElementById('hyacinthTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('hyacinthTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Lily") {
-                            document.getElementById('lilyTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('lilyTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Lily of the valley") {
-                            document.getElementById('lilyTable').innerHTML += `<p>${flower.flowerType} </p>`;
+                            document.getElementById('lilyTable').innerHTML += `<p>${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Mum") {
-                            document.getElementById('mumTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('mumTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Pansy") {
-                            document.getElementById('pansyTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('pansyTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Rose") {
-                            document.getElementById('roseTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('roseTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Tulip") {
-                            document.getElementById('tulipTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('tulipTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         } else if (flower.flowerType == "Windflower") {
-                            document.getElementById('windflowerTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType} </p>`;
+                            document.getElementById('windflowerTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
                         }
                     })
                 }
