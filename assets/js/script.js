@@ -95,6 +95,7 @@ if (flowerSelect) {
         });
     } else if (url.indexOf('addFlowers') > -1) {
         addFlower.addEventListener('click', (event => {
+            let token = window.localStorage.getItem('x-authenticate-token');
             const payload = {
                 userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
                 flowerId: flowerSelect.value
@@ -103,7 +104,8 @@ if (flowerSelect) {
             const fetchOptions = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-authenticate-token': token
                 },
                 body: JSON.stringify(payload)
             }
@@ -132,6 +134,7 @@ if (flowerSelect) {
         }));
     } else if (url.indexOf('deleteFlowers') > -1) {
         removeFlower.addEventListener('click', (event => {
+            let token = window.localStorage.getItem('x-authenticate-token');
             const payload = {
                 userId: JSON.parse(window.localStorage.getItem('accountInfo')).userId,
                 flowerId: flowerSelect.value
@@ -140,7 +143,8 @@ if (flowerSelect) {
             const fetchOptions = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-authenticate-token': token
                 },
                 body: JSON.stringify(payload)
             }
@@ -252,10 +256,13 @@ function getIslandFlowers() {
     const url = window.location.href;
     if (url.indexOf('island') > -1) {
         let userId = JSON.parse(window.localStorage.getItem('accountInfo')).userId;
+        let token = window.localStorage.getItem('x-authenticate-token');
+        console.log(userId + ": " + token)
         const fetchOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-authenticate-token': token
             },
         }
 
@@ -268,7 +275,7 @@ function getIslandFlowers() {
                 let text = `Flowers on ${islandName}`;
                 document.querySelector('h1').innerHTML = text;
                 if (flowers.errorMessage) {
-                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
+                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
 
                 } else {
                     flowers.forEach(flower => {
@@ -299,10 +306,12 @@ function getIslandFlowers() {
             })
     } else if (url.indexOf('deleteFlowers') > -1) {
         let userId = JSON.parse(window.localStorage.getItem('accountInfo')).userId;
+        let token = window.localStorage.getItem('x-authenticate-token');
         const fetchOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-authenticate-token': token
             },
         }
 
@@ -313,7 +322,7 @@ function getIslandFlowers() {
             .then(flowers => {
                 let text = "";
                 if (flowers.errorMessage) {
-                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
+                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
                 } else {
                     flowers.forEach(flower => {
                         if (flower.flowerColor == null) {
