@@ -274,7 +274,10 @@ function getIslandFlowers() {
                 let islandName = JSON.parse(window.localStorage.getItem('accountInfo')).islandName;
                 let text = `Flowers on ${islandName}`;
                 document.querySelector('h1').innerHTML = text;
-                if (flowers.errorMessage) {
+
+                if (flowers.errorMessage.errorMessage) {
+                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
+                } else if (flowers.errorMessage) {
                     document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
 
                 } else {
@@ -321,7 +324,10 @@ function getIslandFlowers() {
             })
             .then(flowers => {
                 let text = "";
-                if (flowers.errorMessage) {
+                if (flowers.errorMessage.errorMessage) {
+                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
+
+                } else if (flowers.errorMessage) {
                     document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
                 } else {
                     flowers.forEach(flower => {
