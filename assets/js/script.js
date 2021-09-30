@@ -275,12 +275,9 @@ function getIslandFlowers() {
                 let text = `Flowers on ${islandName}`;
                 document.querySelector('h1').innerHTML = text;
 
-                if (flowers.errorMessage.errorMessage) {
+                if (flowers.errorMessage) {
                     document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
-                } else if (flowers.errorMessage) {
-                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
-
-                } else {
+                } else  {
                     flowers.forEach(flower => {
                         if (flower.flowerType == "Cosmos") {
                             document.getElementById('cosmosTable').innerHTML += `<p>${flower.flowerColor} ${flower.flowerType}</p>`;
@@ -324,12 +321,10 @@ function getIslandFlowers() {
             })
             .then(flowers => {
                 let text = "";
-                if (flowers.errorMessage.errorMessage) {
+                if (flowers.errorMessage) {
                     document.getElementById('output').innerHTML += `<p>${flowers.errorMessage.errorMessage}</p>`;
 
-                } else if (flowers.errorMessage) {
-                    document.getElementById('output').innerHTML += `<p>${flowers.errorMessage}</p>`;
-                } else {
+                } else  {
                     flowers.forEach(flower => {
                         if (flower.flowerColor == null) {
                             text += `
